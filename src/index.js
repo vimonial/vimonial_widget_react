@@ -55,10 +55,10 @@ export class VimonialSlider extends React.Component {
       data-add-review={this.props.addReview || false}
       data-slide-gap={this.props.slideGap || 10}
       data-autoplay={this.props.autoplay || true}
-      data-popup="false"
-      data-display-quote="false"
-      data-display-card="false"
-      data-display-discount="false"
+      data-popup={this.props.popup || false}
+      data-display-quote={this.props.displayQuotes || false}
+      data-display-card={this.props.displayCard || true}
+      data-display-discount={this.props.displayDiscount || true}
       data-width={this.props.width || 200}
       data-width-mobile={this.props.widthMobile || 150}
       data-shadow-size={this.props.shadowSize || 10}
@@ -71,8 +71,10 @@ export class VimonialSlider extends React.Component {
       data-align-items={this.props.alignItems || "center"}
       data-overflow={this.props.overflow || "false"}
       data-shop-url={this.props.shopUrl || ""}
+      data-buy-now-text={this.props.buyNowText || "Add to cart"}
       data-campaign-id={this.props.campaignId || ""}
       data-shop-id={this.props.shopId || ""}
       data-product-id={this.props.productId || ""}></div>
   }
 }
+
