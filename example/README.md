@@ -1,5 +1,3 @@
-This example was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Example Implementation
 
-It is linked to the vimonial_widget_react package in the parent directory for development purposes.
-
-You can run `yarn install` and then `yarn start` to test your package.
+Example on how to use the vimonial_widget_react package in the parent directory for development purposes.

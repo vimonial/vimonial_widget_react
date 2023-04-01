@@ -1,6 +1,4 @@
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var React = _interopDefault(require('react'));
+var React = require('react');
 
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
@@ -18,8 +16,10 @@ function _setPrototypeOf(o, p) {
 var removeScript = function removeScript(scriptToremove) {
   var allsuspects = document.getElementsByTagName("script");
   for (var i = allsuspects.length; i >= 0; i--) {
-    if (allsuspects[i] && allsuspects[i].getAttribute("src") !== null && allsuspects[i].getAttribute("src").indexOf("" + scriptToremove) !== -1) {
-      allsuspects[i].parentNode.removeChild(allsuspects[i]);
+    var _allsuspects$i, _allsuspects$i$getAtt;
+    if (allsuspects[i] && allsuspects[i].getAttribute("src") !== null && ((_allsuspects$i = allsuspects[i]) === null || _allsuspects$i === void 0 ? void 0 : (_allsuspects$i$getAtt = _allsuspects$i.getAttribute("src")) === null || _allsuspects$i$getAtt === void 0 ? void 0 : _allsuspects$i$getAtt.indexOf("" + scriptToremove)) !== -1) {
+      var _allsuspects$i2, _allsuspects$i2$paren;
+      (_allsuspects$i2 = allsuspects[i]) === null || _allsuspects$i2 === void 0 ? void 0 : (_allsuspects$i2$paren = _allsuspects$i2.parentNode) === null || _allsuspects$i2$paren === void 0 ? void 0 : _allsuspects$i2$paren.removeChild(allsuspects[i]);
     }
   }
 };
@@ -39,8 +39,10 @@ var appendStyle = function appendStyle(styleToAppend) {
 var removeStyle = function removeStyle(scriptToremove) {
   var allsuspects = document.getElementsByTagName("link");
   for (var i = allsuspects.length; i >= 0; i--) {
-    if (allsuspects[i] && allsuspects[i].getAttribute("href") !== null && allsuspects[i].getAttribute("href").indexOf("" + scriptToremove) !== -1) {
-      allsuspects[i].parentNode.removeChild(allsuspects[i]);
+    var _allsuspects$i3, _allsuspects$i3$getAt;
+    if (allsuspects[i] && allsuspects[i].getAttribute("href") !== null && ((_allsuspects$i3 = allsuspects[i]) === null || _allsuspects$i3 === void 0 ? void 0 : (_allsuspects$i3$getAt = _allsuspects$i3.getAttribute("href")) === null || _allsuspects$i3$getAt === void 0 ? void 0 : _allsuspects$i3$getAt.indexOf("" + scriptToremove)) !== -1) {
+      var _allsuspects$i4, _allsuspects$i4$paren;
+      (_allsuspects$i4 = allsuspects[i]) === null || _allsuspects$i4 === void 0 ? void 0 : (_allsuspects$i4$paren = _allsuspects$i4.parentNode) === null || _allsuspects$i4$paren === void 0 ? void 0 : _allsuspects$i4$paren.removeChild(allsuspects[i]);
     }
   }
 };
@@ -59,7 +61,7 @@ var VimonialSlider = /*#__PURE__*/function (_React$Component) {
     removeStyle("https://assets.vimonial.com/widget/vimonial-carousel.css");
   };
   _proto.render = function render() {
-    return /*#__PURE__*/React.createElement("div", {
+    return React.createElement("div", {
       id: "vimonial-carousel",
       "data-add-review": this.props.addReview || false,
       "data-slide-gap": this.props.slideGap || 10,
