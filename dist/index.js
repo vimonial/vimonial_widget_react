@@ -13,38 +13,20 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
-var removeScript = function removeScript(scriptToremove) {
-  var allsuspects = document.getElementsByTagName("script");
-  for (var i = allsuspects.length; i >= 0; i--) {
-    var _allsuspects$i, _allsuspects$i$getAtt;
-    if (allsuspects[i] && allsuspects[i].getAttribute("src") !== null && ((_allsuspects$i = allsuspects[i]) === null || _allsuspects$i === void 0 ? void 0 : (_allsuspects$i$getAtt = _allsuspects$i.getAttribute("src")) === null || _allsuspects$i$getAtt === void 0 ? void 0 : _allsuspects$i$getAtt.indexOf("" + scriptToremove)) !== -1) {
-      var _allsuspects$i2, _allsuspects$i2$paren;
-      (_allsuspects$i2 = allsuspects[i]) === null || _allsuspects$i2 === void 0 ? void 0 : (_allsuspects$i2$paren = _allsuspects$i2.parentNode) === null || _allsuspects$i2$paren === void 0 ? void 0 : _allsuspects$i2$paren.removeChild(allsuspects[i]);
-    }
-  }
-};
 var appendScript = function appendScript(scriptToAppend) {
-  var script = document.createElement("script");
+  var script = document.createElement('script');
   script.src = scriptToAppend;
   script.async = true;
+  script.id = 'vimonial_widget_js';
   document.body.appendChild(script);
 };
 var appendStyle = function appendStyle(styleToAppend) {
-  var link = document.createElement("link");
+  var link = document.createElement('link');
   link.href = styleToAppend;
-  link.rel = "stylesheet";
-  link.type = "text/css";
-  document.body.appendChild(link);
-};
-var removeStyle = function removeStyle(scriptToremove) {
-  var allsuspects = document.getElementsByTagName("link");
-  for (var i = allsuspects.length; i >= 0; i--) {
-    var _allsuspects$i3, _allsuspects$i3$getAt;
-    if (allsuspects[i] && allsuspects[i].getAttribute("href") !== null && ((_allsuspects$i3 = allsuspects[i]) === null || _allsuspects$i3 === void 0 ? void 0 : (_allsuspects$i3$getAt = _allsuspects$i3.getAttribute("href")) === null || _allsuspects$i3$getAt === void 0 ? void 0 : _allsuspects$i3$getAt.indexOf("" + scriptToremove)) !== -1) {
-      var _allsuspects$i4, _allsuspects$i4$paren;
-      (_allsuspects$i4 = allsuspects[i]) === null || _allsuspects$i4 === void 0 ? void 0 : (_allsuspects$i4$paren = _allsuspects$i4.parentNode) === null || _allsuspects$i4$paren === void 0 ? void 0 : _allsuspects$i4$paren.removeChild(allsuspects[i]);
-    }
-  }
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.id = 'vimonial_widget_css';
+  document.head.appendChild(link);
 };
 var VimonialSlider = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(VimonialSlider, _React$Component);
@@ -53,25 +35,20 @@ var VimonialSlider = /*#__PURE__*/function (_React$Component) {
   }
   var _proto = VimonialSlider.prototype;
   _proto.componentDidMount = function componentDidMount() {
-    if (!window["vimonialReactInit"]) {
-      appendStyle("https://assets.vimonial.com/widget/vimonial-carousel.css");
-      appendScript("https://assets.vimonial.com/widget/vimonial-carousel.js");
-      window["vimonialReactInit"] = 1;
-    } else {
-      window["vimonialReactInit"] = window["vimonialReactInit"] + 1;
+    var vimCSS = document.getElementById('vimonial_widget_css');
+    var vimJS = document.getElementById('vimonial_widget_js');
+    if (!vimCSS) {
+      appendStyle('https://assets.vimonial.com/widget/vimonial-carousel.css');
     }
-  };
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    if (window["vimonialReactInit"] && window["vimonialReactInit"] == 1) {
-      removeScript("https://assets.vimonial.com/widget/vimonial-carousel.js");
-      removeStyle("https://assets.vimonial.com/widget/vimonial-carousel.css");
-    } else if (window["vimonialReactInit"]) {
-      window["vimonialReactInit"] = window["vimonialReactInit"] - 1;
+    if (!vimJS) {
+      appendScript('https://assets.vimonial.com/widget/vimonial-carousel.js');
+    } else {
+      window.reInitVimonial();
     }
   };
   _proto.render = function render() {
     return React.createElement("div", {
-      id: "vimonial-carousel",
+      id: 'vimonial-carousel',
       "data-add-review": this.props.addReview || false,
       "data-slide-gap": this.props.slideGap || 10,
       "data-autoplay": this.props.autoplay || true,
@@ -82,19 +59,19 @@ var VimonialSlider = /*#__PURE__*/function (_React$Component) {
       "data-width": this.props.width || 200,
       "data-width-mobile": this.props.widthMobile || 150,
       "data-shadow-size": this.props.shadowSize || 10,
-      "data-color-play-button": this.props.colorPlayButton || "#000",
-      "data-color-play-button-inner": this.props.colorPlayButtonInner || "#FFF",
-      "data-order-by": this.props.orderBy || "date_desc",
+      "data-color-play-button": this.props.colorPlayButton || '#000',
+      "data-color-play-button-inner": this.props.colorPlayButtonInner || '#FFF',
+      "data-order-by": this.props.orderBy || 'date_desc',
       "data-border-size": this.props.borderSize || 0,
-      "data-border-color": this.props.borderColor || "#000",
-      "data-load-background-color": this.props.loadBackgroundColor || "transparent",
-      "data-align-items": this.props.alignItems || "center",
-      "data-overflow": this.props.overflow || "false",
-      "data-shop-url": this.props.shopUrl || "",
-      "data-buy-now-text": this.props.buyNowText || "Add to cart",
-      "data-campaign-id": this.props.campaignId || "",
-      "data-shop-id": this.props.shopId || "",
-      "data-product-id": this.props.productId || ""
+      "data-border-color": this.props.borderColor || '#000',
+      "data-load-background-color": this.props.loadBackgroundColor || 'transparent',
+      "data-align-items": this.props.alignItems || 'center',
+      "data-overflow": this.props.overflow || 'false',
+      "data-shop-url": this.props.shopUrl || '',
+      "data-buy-now-text": this.props.buyNowText || 'Add to cart',
+      "data-campaign-id": this.props.campaignId || '',
+      "data-shop-id": this.props.shopId || '',
+      "data-product-id": this.props.productId || ''
     });
   };
   return VimonialSlider;
