@@ -1,6 +1,6 @@
 {
   "name": "vimonial_widget_react",
-  "version": "1.0.6",
+  "version": "1.0.11",
   "description": "Vimonial widget for react",
   "author": "lionls",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^18.0.0"
+    "react": "^16 || ^17 || ^18"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",

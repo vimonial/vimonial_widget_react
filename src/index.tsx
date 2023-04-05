@@ -76,8 +76,12 @@ export class VimonialSlider extends React.Component<VimonialProps> {
     }
     if (!vimJS) {
       appendScript('https://assets.vimonial.com/widget/vimonial-carousel.js')
-    }else{
-      window.reInitVimonial()
+
+      // appendScript('/vimonial-carousel.js')
+    } else {
+      if ('reInitVimonial' in window) {
+        window.reInitVimonial()
+      }
     }
 
     // if("vimonialReactInit" in window){
@@ -95,7 +99,6 @@ export class VimonialSlider extends React.Component<VimonialProps> {
     //   appendScript("https://assets.vimonial.com/widget/vimonial-carousel.js");
     //   window["vimonialReactInit"] = 1
     // }
-    
   }
 
   // componentWillUnmount() {
@@ -111,13 +114,17 @@ export class VimonialSlider extends React.Component<VimonialProps> {
     return (
       <div
         id='vimonial-carousel'
-        data-add-review={this.props.addReview || false}
+        data-add-review={
+          typeof this.props.addReview === 'undefined'
+            ? false
+            : this.props.addReview
+        }
         data-slide-gap={this.props.slideGap || 10}
-        data-autoplay={this.props.autoplay || true}
-        data-popup={this.props.popup || false}
-        data-display-quote={this.props.displayQuotes || false}
-        data-display-card={this.props.displayCard || true}
-        data-display-discount={this.props.displayDiscount || true}
+        data-autoplay={typeof this.props.autoplay === 'undefined'? true: this.props.autoplay}
+        data-popup={typeof this.props.popup=== 'undefined'? false: this.props.popup}
+        data-display-quote={typeof this.props.displayQuotes=== 'undefined'? false: this.props.displayQuotes}
+        data-display-card={typeof this.props.displayCard === 'undefined'? true:this.props.displayCard }
+        data-display-discount={typeof this.props.displayDiscount === 'undefined'? true: this.props.displayDiscount }
         data-width={this.props.width || 200}
         data-width-mobile={this.props.widthMobile || 150}
         data-shadow-size={this.props.shadowSize || 10}
@@ -140,3 +147,4 @@ export class VimonialSlider extends React.Component<VimonialProps> {
     )
   }
 }
+
