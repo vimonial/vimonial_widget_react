@@ -53,12 +53,21 @@ var VimonialSlider = /*#__PURE__*/function (_React$Component) {
   }
   var _proto = VimonialSlider.prototype;
   _proto.componentDidMount = function componentDidMount() {
-    appendStyle("https://assets.vimonial.com/widget/vimonial-carousel.css");
-    appendScript("https://assets.vimonial.com/widget/vimonial-carousel.js");
+    if (!window["vimonialReactInit"]) {
+      appendStyle("https://assets.vimonial.com/widget/vimonial-carousel.css");
+      appendScript("https://assets.vimonial.com/widget/vimonial-carousel.js");
+      window["vimonialReactInit"] = 1;
+    } else {
+      window["vimonialReactInit"] = window["vimonialReactInit"] + 1;
+    }
   };
-  _proto.componentDidUnmount = function componentDidUnmount() {
-    removeScript("https://assets.vimonial.com/widget/vimonial-carousel.js");
-    removeStyle("https://assets.vimonial.com/widget/vimonial-carousel.css");
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (window["vimonialReactInit"] && window["vimonialReactInit"] == 1) {
+      removeScript("https://assets.vimonial.com/widget/vimonial-carousel.js");
+      removeStyle("https://assets.vimonial.com/widget/vimonial-carousel.css");
+    } else if (window["vimonialReactInit"]) {
+      window["vimonialReactInit"] = window["vimonialReactInit"] - 1;
+    }
   };
   _proto.render = function render() {
     return createElement("div", {

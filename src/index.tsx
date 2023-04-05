@@ -68,12 +68,22 @@ export class VimonialSlider extends React.Component<VimonialProps> {
   }
 
   componentDidMount() {
-    appendStyle("https://assets.vimonial.com/widget/vimonial-carousel.css");
-    appendScript("https://assets.vimonial.com/widget/vimonial-carousel.js");
+    if(!window["vimonialReactInit"]){
+      appendStyle("https://assets.vimonial.com/widget/vimonial-carousel.css");
+      appendScript("https://assets.vimonial.com/widget/vimonial-carousel.js");
+      window["vimonialReactInit"] = 1
+    }else{
+      window["vimonialReactInit"] = window["vimonialReactInit"] + 1
+    }
   }
-  componentDidUnmount() {
-    removeScript("https://assets.vimonial.com/widget/vimonial-carousel.js")
-    removeStyle("https://assets.vimonial.com/widget/vimonial-carousel.css")
+  
+  componentWillUnmount() {
+    if(window["vimonialReactInit"] && window["vimonialReactInit"] == 1){
+      removeScript("https://assets.vimonial.com/widget/vimonial-carousel.js")
+      removeStyle("https://assets.vimonial.com/widget/vimonial-carousel.css")
+    }else if(window["vimonialReactInit"]){
+      window["vimonialReactInit"] = window["vimonialReactInit"] - 1
+    }
   }
 
   render() {
