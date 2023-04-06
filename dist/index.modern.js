@@ -49,6 +49,7 @@ var VimonialSlider = /*#__PURE__*/function (_React$Component) {
     }
   };
   _proto.render = function render() {
+    console.log(this.props);
     return createElement("div", {
       id: 'vimonial-carousel',
       "data-add-review": typeof this.props.addReview === 'undefined' ? false : this.props.addReview,
@@ -68,9 +69,11 @@ var VimonialSlider = /*#__PURE__*/function (_React$Component) {
       "data-border-color": this.props.borderColor || '#000',
       "data-load-background-color": this.props.loadBackgroundColor || 'transparent',
       "data-align-items": this.props.alignItems || 'center',
-      "data-overflow": this.props.overflow || 'false',
+      "data-overflow": typeof this.props.overflow === 'undefined' ? false : this.props.overflow,
       "data-shop-url": this.props.shopUrl || '',
       "data-buy-now-text": this.props.buyNowText || 'Add to cart',
+      "data-show-names": typeof this.props.showNames === 'undefined' ? false : this.props.showNames,
+      "data-hide-product-title": typeof this.props.hideProductTitle === 'undefined' ? false : this.props.hideProductTitle,
       "data-campaign-id": this.props.campaignId || '',
       "data-shop-id": this.props.shopId || '',
       "data-product-id": this.props.productId || ''

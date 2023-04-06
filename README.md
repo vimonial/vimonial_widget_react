@@ -50,7 +50,11 @@ class Example extends Component {
 | `borderColor`| color | Color of Border | 
 | `borderSize`| range | Select Border Size | 
 | `overflow`| checkbox | Show Scroll Bar for Videos | 
+| `showNames`| checkbox | Display Reviewer Names | 
+| `hideProductTitle`| checkbox | Hide Title and Price of Product | 
 
+ data-show-names={typeof this.props.showNames=== 'undefined'? false: this.props.showNames}
+        data-hide-product-title=
 
 
 ## License

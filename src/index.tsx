@@ -24,6 +24,8 @@ interface VimonialProps {
   campaignId?: string
   shopId: string
   productId?: string
+  showNames?: boolean
+  hideProductTitle?: boolean
 }
 
 // const removeScript = (scriptToremove : string) => {
@@ -111,6 +113,7 @@ export class VimonialSlider extends React.Component<VimonialProps> {
   // }
 
   render() {
+    console.log(this.props)
     return (
       <div
         id='vimonial-carousel'
@@ -137,12 +140,17 @@ export class VimonialSlider extends React.Component<VimonialProps> {
           this.props.loadBackgroundColor || 'transparent'
         }
         data-align-items={this.props.alignItems || 'center'}
-        data-overflow={this.props.overflow || 'false'}
+        data-overflow={typeof this.props.overflow === 'undefined'? false: this.props.overflow}
         data-shop-url={this.props.shopUrl || ''}
         data-buy-now-text={this.props.buyNowText || 'Add to cart'}
+        
+        data-show-names={typeof this.props.showNames === 'undefined'? false: this.props.showNames}
+        data-hide-product-title={typeof this.props.hideProductTitle === 'undefined'? false: this.props.hideProductTitle}
+
         data-campaign-id={this.props.campaignId || ''}
         data-shop-id={this.props.shopId || ''}
         data-product-id={this.props.productId || ''}
+        
       ></div>
     )
   }

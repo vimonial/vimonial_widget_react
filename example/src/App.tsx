@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 const App = () => {
   const [show, setShow] = useState(false)
-
+//hideProductTitle={true} showNames={true}
   return (
     <div>
       <h1>Pagecontent</h1>
