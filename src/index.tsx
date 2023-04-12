@@ -113,7 +113,7 @@ export class VimonialSlider extends React.Component<VimonialProps> {
   // }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div
         id='vimonial-carousel'

@@ -49,7 +49,6 @@ var VimonialSlider = /*#__PURE__*/function (_React$Component) {
     }
   };
   _proto.render = function render() {
-    console.log(this.props);
     return createElement("div", {
       id: 'vimonial-carousel',
       "data-add-review": typeof this.props.addReview === 'undefined' ? false : this.props.addReview,
