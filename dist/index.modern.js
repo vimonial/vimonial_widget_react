@@ -75,7 +75,8 @@ var VimonialSlider = /*#__PURE__*/function (_React$Component) {
       "data-hide-product-title": typeof this.props.hideProductTitle === 'undefined' ? false : this.props.hideProductTitle,
       "data-campaign-id": this.props.campaignId || '',
       "data-shop-id": this.props.shopId || '',
-      "data-product-id": this.props.productId || ''
+      "data-product-id": this.props.productId || '',
+      "data-prev-next-buttons": typeof this.props.prevNextButtons === 'undefined' ? false : this.props.prevNextButtons
     });
   };
   return VimonialSlider;

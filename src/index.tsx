@@ -26,6 +26,7 @@ interface VimonialProps {
   productId?: string
   showNames?: boolean
   hideProductTitle?: boolean
+  prevNextButtons?: boolean
 }
 
 // const removeScript = (scriptToremove : string) => {
@@ -145,11 +146,12 @@ export class VimonialSlider extends React.Component<VimonialProps> {
         data-buy-now-text={this.props.buyNowText || 'Add to cart'}
         
         data-show-names={typeof this.props.showNames === 'undefined'? false: this.props.showNames}
-        data-hide-product-title={typeof this.props.hideProductTitle === 'undefined'? false: this.props.hideProductTitle}
+        data-hide-product-title={typeof this.props.hideProductTitle === 'undefined' ? false: this.props.hideProductTitle}
 
         data-campaign-id={this.props.campaignId || ''}
         data-shop-id={this.props.shopId || ''}
         data-product-id={this.props.productId || ''}
+        data-prev-next-buttons={typeof this.props.prevNextButtons === 'undefined' ? false : this.props.prevNextButtons }
         
       ></div>
     )

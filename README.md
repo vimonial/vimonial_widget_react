@@ -52,9 +52,9 @@ class Example extends Component {
 | `overflow`| checkbox | Show Scroll Bar for Videos | 
 | `showNames`| checkbox | Display Reviewer Names | 
 | `hideProductTitle`| checkbox | Hide Title and Price of Product | 
+| `prevNextButtons`| boolean | Show Previous and Next Buttons | 
 
- data-show-names={typeof this.props.showNames=== 'undefined'? false: this.props.showNames}
-        data-hide-product-title=
+
 
 
 ## License
